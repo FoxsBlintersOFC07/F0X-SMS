@@ -8,7 +8,7 @@
 sudo apt install git python3
 git clone https://github.com/FoxsBlintersOFC07/F0X-SMS.git
 cd F0X-SMS
-python3 -m pip install Requirements.txt
+bash instalar.sh
 python3 FoxSMS.py
 ```
 ## INSTALAÇÃO (TERMUX)
@@ -17,7 +17,7 @@ python3 FoxSMS.py
 pkg install git && pkg install python3
 git clone https://github.com/FoxsBlintersOFC07/F0X-SMS.git
 cd F0X-SMS
-pip3 install Requirements.txt
+bash instalar.sh
 python3 FoxSMS.py
 ```
 
