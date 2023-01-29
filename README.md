@@ -17,7 +17,7 @@ python3 FoxSMS.py
 pkg install git && pkg install python3
 git clone https://github.com/FoxsBlintersOFC07/F0X-SMS.git
 cd F0X-SMS
-bash instalar.sh
+pip3 -r install Requirements.txt
 python3 FoxSMS.py
 ```
 
