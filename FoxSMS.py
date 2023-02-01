@@ -21,7 +21,7 @@ except ModuleNotFoundError:
     elif subprocess.run(['pip3', 'install', '-r', 'requirements.txt'], shell=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0:
         exit('\x1b[1m\x1b[92m' + '[+] Depedencias instaladas\nExecute o pograma  novamente'.title().center(os.get_terminal_size().columns))
     else:
-        exit('\x1b[1m\x1b[31m' + '[!] something error occured while installing dependencies\n maybe pip isn\'t installed or requirements.txt file not available?'.title().center(os.get_terminal_size().columns))
+        exit('\x1b[1m\x1b[31m' + '[!] Ocorreu um erro ao instalar as dependências\n talvez o pip não esteja instalado ou o arquivo Requirements.txt não está disponível?'.title().center(os.get_terminal_size().columns))
 BLU = colorama.Style.BRIGHT + colorama.Fore.BLUE
 CYA = colorama.Style.BRIGHT + colorama.Fore.CYAN
 GRE = colorama.Style.BRIGHT + colorama.Fore.GREEN
@@ -37,23 +37,10 @@ LIGRE = colorama.Style.BRIGHT + colorama.Fore.LIGHTGREEN_EX
 BOLD = colorama.Style.BRIGHT
 LIMPAR = 'cls' if os.name == 'nt' else 'clear'
 CORES = BLU, CYA, GRE, YEL, RED, MAG, LIYEL, LIRED, LIMAG, LIBLU, LICYA, LIGRE
-FONTES = 'basic', 'o8', 'cosmic', 'graffiti', 'chunky', 'epic', 'doom', 'avatar', #'poison'
+fonte = 'basic', 'o8', 'cosmic', 'graffiti', 'chunky', 'epic', 'doom', 'avatar', #'poison'
 global font
-font = random.choice(FONTES)
+font = random.choice(fonte)
 colorama.init(autoreset=True)
-
-def logo() -> None:
-    os.system(LIMPAR)
-    cor1 = random.choice(CORES)
-    cor2 = random.choice(CORES)
-    while cor1 == cor2:
-        cor2 = random.choice(CORES)
-    print(cor1 + '_' * os.get_terminal_size().columns, end='\n'*2)
-    print(cor2 + pyfiglet.figlet_format('FOXS\nBLINTERS', font=font, justify='center', width=os.get_terminal_size().columns), end='')
-    msg = '[+] By Fox Waynne'
-    _ = int(os.get_terminal_size().columns/2)
-    _ -= int(len(msg)/2)
-    print(cor1 + '_' * _ + LIYEL + msg + cor1 + '_' * _ + '\n')
 
 def fetch_countries() -> dict:
     url = 'https://temp-numbers.xyz/admin/API/country_catagory.php'
@@ -146,7 +133,6 @@ def update():
 
 def main():
     try:
-        logo()
         tmp_countries = fetch_countries()
         for i in enumerate(tmp_countries, start=1):
             print(f'{random.choice(CORES)}{i[0]}. {i[1]["country_code"]} {i[1]["Country_Name"]}'.center(os.get_terminal_size().columns))
@@ -199,7 +185,6 @@ def main():
                 print_sms(number_list[int(choice)-1]['ToNumber'])
             print(BOLD + 'Pressione <Enter> Para Recarreagar as msg'.center(os.get_terminal_size().columns))
             input(BOLD + 'Ou ctrl+c Para o Menu Iniciar'.center(os.get_terminal_size().columns))
-            logo()
     except KeyboardInterrupt:
         main()
 if __name__ == '__main__':
